@@ -1,0 +1,42 @@
+﻿@page "/products"
+@using eShop.UseCases.SearchProductScreen
+@using eShop.CoreBusiness.Models
+@inject ISearchProduct searchProduct
+
+<h3>SearchProductsComponent</h3>
+
+<SearchBarComponent OnSearchCallback="OnSearchCallback"></SearchBarComponent>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (Product p in _products)
+    {
+        <ProductItemComponent Product="p"></ProductItemComponent>
+    }
+    </tbody>
+</table>
+
+
+@code {
+
+    IEnumerable<Product> _products;
+
+
+    protected override void OnInitialized()
+    {
+        _products = searchProduct.Execute("");
+    }
+
+    private void OnSearchCallback(string filter)
+    {
+        _products = searchProduct.Execute(filter);
+    }
+
+}

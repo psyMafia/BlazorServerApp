@@ -1,11 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\eShop.DataStore.HardCoded\eShop.DataStore.HardCoded.csproj" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="RestSharp" Version="107.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\eShop.UseCases\eShop.UseCases.csproj" />
   </ItemGroup>
 
