@@ -1,12 +1,20 @@
 ﻿@using eShop.CoreBusiness.Models
 
+
+
 <tr>
-    <td>@Product.Name</td>
+    <td><img src="@Product.ImageLink" height="100px"/></td>
+    <NavLink href=@($"/product/{Product.Id}")>
+        <td>@Product.Name</td>
+    </NavLink>
     <td>@Product.Brand</td>
     <td>@Product.Price</td>
 </tr>
 
+
+
 @code {
+
     [Parameter]
     public Product Product { get; set; }
 

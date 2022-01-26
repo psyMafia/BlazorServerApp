@@ -1,0 +1,28 @@
+﻿@page "/product/{id:int}"
+@using eShop.CoreBusiness.Models
+@using eShop.UseCases.SearchProductScreen
+@inject IViewProduct _viewProduct
+
+
+<div>
+    <img src="@_product.ImageLink" height="300px"/>
+    <br/>
+    @_product.Name
+    <br/>
+    @_product.Description
+    <br/>
+    @_product.Price
+</div>
+
+ @code {
+    Product _product;
+
+    [Parameter]
+    public int Id { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        _product = _viewProduct.Execute(Id);
+    }
+
+}
